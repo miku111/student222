@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Using Axios in HTML</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1>{{ message }}</h1>
+    <button onclick="register()">注册</button>
+    <input type="text" id="username" name="username"/>
+    <input type="password" id="password" name="password"/>
+</div>
+
+<script>
+function register() {
+    axios.post('/Users', {
+        username: '54412',
+        password: 'sadawsdw'
+    }).then(response => {
+        console.log(response.data)
+    }).catch(error => {
+        console.log(error)
+    });
+
+
+}
+
+    function getAll(){
+    var id=document.getElementById("id").value;
+        axios.get('/Users/'+id)
+            .then(function(response) {
+                console.log(response.data); // 打印响应结果
+            })
+            .catch(function(error) {
+                console.log('请求失败：' + error.message); // 打印失败信息
+            });
+    }
+</script>
+</body>
+</html>
